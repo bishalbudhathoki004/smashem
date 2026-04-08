@@ -2,49 +2,223 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Smash 'Em</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smash &apos;Em - Windows Game</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="start-screen" id="start-screen">
-    <h1>🎯 Smash 'Em! 🎯</h1>
-    <p class="subtitle">The Ultimate Whack-a-Mole Challenge</p>
-    <div class="mole-preview">🐹</div>
-    <div class="instructions">
-      Click on the moles as they pop up from their holes! <br>
-      You have 15 seconds to score as many points as possible. <br>
-      Be quick - they don't stay up for long!
+
+  <!-- Desktop Icons -->
+  <div class="desktop-icons">
+    <div class="desktop-icon">
+      <span class="icon-img">🎯</span>
+      <span class="icon-label">Smash &apos;Em</span>
     </div>
-    <button class="start-button" id="start-game-btn">Start Game</button>
-    <div class="high-score">High Score: <span id="high-score">0</span></div>
+    <div class="desktop-icon">
+      <span class="icon-img">🖥️</span>
+      <span class="icon-label">My Computer</span>
+    </div>
+    <div class="desktop-icon">
+      <span class="icon-img">🗑️</span>
+      <span class="icon-label">Recycle Bin</span>
+    </div>
   </div>
 
-  <div class="game-screen" id="game-screen">
-    <h1>🎯 Smash 'Em!</h1>
-    <div class="game-stats">
-      <div class="stat">
-        <div class="stat-label">Score</div>
-        <div class="stat-value" id="score">0</div>
+  <!-- ====================== START SCREEN WINDOW ====================== -->
+  <div id="start-screen">
+    <div class="win-window">
+
+      <!-- Title Bar -->
+      <div class="win-titlebar">
+        <div class="win-titlebar-left">
+          <span class="win-titlebar-icon">🎯</span>
+          <span class="win-titlebar-title">Smash &apos;Em! - Whack-a-Mole</span>
+        </div>
+        <div class="win-titlebar-buttons">
+          <button class="win-btn-title" title="Minimize">_</button>
+          <button class="win-btn-title" title="Maximize">□</button>
+          <button class="win-btn-title danger" title="Close">✕</button>
+        </div>
       </div>
-      <div class="stat">
-        <div class="stat-label">Time Left</div>
-        <div class="stat-value" id="timer">15</div>
+
+      <!-- Menu Bar -->
+      <div class="win-menubar">
+        <span class="win-menu-item">File</span>
+        <span class="win-menu-item">Game</span>
+        <span class="win-menu-item">Options</span>
+        <span class="win-menu-item">Help</span>
       </div>
+
+      <!-- Window Body -->
+      <div class="win-body">
+        <div class="start-screen-content">
+
+          <!-- Game Title Panel -->
+          <div class="win-panel" style="margin-bottom:10px;">
+            <div class="win-game-title">
+              🐹 Smash &apos;Em! 🐹
+            </div>
+            <div class="win-subtitle">The Ultimate Whack-a-Mole Challenge v1.0</div>
+            <div style="text-align:center; margin: 6px 0;">
+              <span class="mole-preview">🐹</span>
+            </div>
+          </div>
+
+          <!-- Instructions GroupBox -->
+          <div class="win-groupbox">
+            <span class="win-groupbox-label">Instructions</span>
+            <div class="win-instructions-box">
+              <ul>
+                <li><span class="bullet">▶</span> Click on the moles as they pop up from their holes!</li>
+                <li><span class="bullet">▶</span> You have <strong>15 seconds</strong> to score as many points as possible.</li>
+                <li><span class="bullet">▶</span> Be quick &mdash; they don&apos;t stay up for long!</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- High Score -->
+          <div style="display:flex; align-items:center; justify-content:space-between; margin: 8px 0;">
+            <div class="high-score-display">
+              <span class="hs-icon">🏆</span>
+              <span class="hs-label">Best Score:</span>
+              <span id="high-score" style="font-weight:bold; font-family:'Courier New',monospace; color:#000080;">0</span>
+            </div>
+            <div class="high-score-display">
+              <span>⏱️</span>
+              <span class="hs-label">Time Limit:</span>
+              <span style="font-family:'Courier New',monospace; font-weight:bold;">15 sec</span>
+            </div>
+          </div>
+
+          <hr class="win-separator">
+
+          <!-- Buttons -->
+          <div style="display:flex; justify-content:center; gap:8px; margin-top:8px;">
+            <button class="win-button primary" id="start-game-btn">
+              ▶ Start Game
+            </button>
+            <button class="win-button">
+              ❓ Help
+            </button>
+            <button class="win-button danger">
+              ✕ Exit
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Status Bar -->
+      <div class="win-statusbar">
+        <div class="win-statusbar-panel">Ready</div>
+        <div class="win-statusbar-panel">High Score: <span id="hs-status">0</span></div>
+        <div class="win-statusbar-panel" style="margin-left:auto;">smash-em.exe</div>
+      </div>
+
     </div>
-    <div id="game-over">
-      Game Over! <br>
-      Final Score: <span id="final-score">0</span>
+  </div>
+  <!-- END START SCREEN -->
+
+
+  <!-- ====================== GAME SCREEN WINDOW ====================== -->
+  <div id="game-screen" style="display:none;">
+    <div class="win-window" style="width:560px;">
+
+      <!-- Title Bar -->
+      <div class="win-titlebar">
+        <div class="win-titlebar-left">
+          <span class="win-titlebar-icon">🎯</span>
+          <span class="win-titlebar-title">Smash &apos;Em! - Game In Progress</span>
+        </div>
+        <div class="win-titlebar-buttons">
+          <button class="win-btn-title" title="Minimize">_</button>
+          <button class="win-btn-title" title="Maximize">□</button>
+          <button class="win-btn-title danger" title="Close">✕</button>
+        </div>
+      </div>
+
+      <!-- Menu Bar -->
+      <div class="win-menubar">
+        <span class="win-menu-item">File</span>
+        <span class="win-menu-item">Game</span>
+        <span class="win-menu-item">Options</span>
+        <span class="win-menu-item">Help</span>
+      </div>
+
+      <!-- Window Body -->
+      <div class="win-body">
+
+        <!-- Stats -->
+        <div class="game-stats">
+          <div class="stat-box">
+            <div class="stat-label">Score</div>
+            <div class="stat-value" id="score">0</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Time Left</div>
+            <div class="stat-value" id="timer">15</div>
+          </div>
+          <div class="stat-box" style="flex:1;">
+            <div class="stat-label">Time Remaining</div>
+            <div class="win-progress-bar" style="margin-top:6px;">
+              <div class="win-progress-fill" id="progress-fill" style="width:100%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Game Over Dialog -->
+        <div id="game-over">
+          <span class="gameover-icon">ℹ️</span>
+          Game Over! &nbsp; Final Score: <span id="final-score">0</span>
+        </div>
+
+        <!-- Mole Grid -->
+        <div class="game">
+          <div class="hole"><div class="mole">🐹</div></div>
+          <div class="hole"><div class="mole">🐹</div></div>
+          <div class="hole"><div class="mole">🐹</div></div>
+          <div class="hole"><div class="mole">🐹</div></div>
+          <div class="hole"><div class="mole">🐹</div></div>
+          <div class="hole"><div class="mole">🐹</div></div>
+        </div>
+
+        <hr class="win-separator">
+
+        <!-- Action Buttons -->
+        <div class="action-row">
+          <button class="win-button primary" id="restart-btn" style="display:none;">
+            🔄 Play Again
+          </button>
+          <button class="win-button" id="back-btn">
+            🏠 Back to Menu
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Status Bar -->
+      <div class="win-statusbar">
+        <div class="win-statusbar-panel" id="status-text">Game running...</div>
+        <div class="win-statusbar-panel" style="margin-left:auto;">Score: <span id="status-score">0</span></div>
+      </div>
+
     </div>
-    <div class="game">
-      <div class="hole"><div class="mole">🐹</div></div>
-      <div class="hole"><div class="mole">🐹</div></div>
-      <div class="hole"><div class="mole">🐹</div></div>
-      <div class="hole"><div class="mole">🐹</div></div>
-      <div class="hole"><div class="mole">🐹</div></div>
-      <div class="hole"><div class="mole">🐹</div></div>
+  </div>
+  <!-- END GAME SCREEN -->
+
+
+  <!-- ====================== TASKBAR ====================== -->
+  <div class="win-taskbar">
+    <button class="win-start-button">
+      <span style="font-size:14px;">🪟</span>
+      <strong>Start</strong>
+    </button>
+    <div class="win-taskbar-sep"></div>
+    <div class="win-taskbar-task">
+      <span>🎯</span>
+      Smash &apos;Em!
     </div>
-    <button class="restart-button" id="restart-btn" style="display: none;">Play Again</button>
-    <button class="restart-button" id="back-btn">Back to Menu</button>
+    <div class="win-taskbar-clock" id="taskbar-clock">00:00</div>
   </div>
 
   <script src="script.js"></script>
